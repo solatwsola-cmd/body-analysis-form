@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>體態卡關分析｜找出你瘦不下來的真正原因</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       設計系統 — 極簡暖調保養品牌風格
+    ============================================================ */
+    :root {
+      /* 核心色彩 */
+      --bg:            #FFF8F1;
+      --bg-dark:       #2C2118;
+      --bg-dark-2:     #3A2D20;
+      --bg-section:    #F5EDE2;
+      --accent:        #F6B37A;
+      --accent-deep:   #D98A48;
+      --accent-pale:   #FDF0E2;
+      --accent-light:  #FAD9B8;
+      --text-primary:  #1E1612;
+      --text-body:     #3D2E22;
+      --text-muted:    #8A7560;
+      --text-light:    #B8A28C;
+      --text-on-dark:  #F5EDE2;
+      --text-muted-dark: #C8B49A;
+      --border:        #E8D8C4;
+      --border-light:  #F0E4D4;
+      --white:         #FFFFFF;
+
+      /* 陰影 */
+      --shadow-xs: 0 1px 4px rgba(60, 30, 10, 0.06);
+      --shadow-sm: 0 2px 12px rgba(60, 30, 10, 0.08);
+      --shadow-md: 0 6px 28px rgba(60, 30, 10, 0.11);
+      --shadow-lg: 0 12px 48px rgba(60, 30, 10, 0.14);
+
+      /* 圓角 */
+      --r-sm:  10px;
+      --r-md:  18px;
+      --r-lg:  28px;
+      --r-xl:  40px;
+
+      /* 字型 */
+      --serif: 'Noto Serif TC', 'Georgia', serif;
+      --sans:  'Noto Sans TC', sans-serif;
+
+      /* 動畫 */
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --t:    0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============================================================
+       Reset
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text-body);
+      line-height: 1.8;
+      font-size: 15px;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-wrapper { position: relative; }
+
+    /* ============================================================
+       Hero — 深色背景交替區塊
+    ============================================================ */
+    .hero {
+      background: var(--bg-dark);
+      padding: 72px 28px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 背景裝飾光暈 */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 50%;
+      transform: translateX(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(ellipse, rgba(246, 179, 122, 0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* 封面照片 */
+    .hero-photo {
+      width: 96px; height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+      border: 2px solid rgba(246, 179, 122, 0.5);
+      box-shadow: 0 0 0 6px rgba(246, 179, 122, 0.10), var(--shadow-md);
+      position: relative; z-index: 1;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+
+    /* Badge */
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(246, 179, 122, 0.4);
+      color: var(--accent);
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      position: relative; z-index: 1;
+      text-transform: uppercase;
+    }
+
+    /* 主標題 — Serif 大字 */
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(24px, 6vw, 40px);
+      font-weight: 600;
+      color: var(--text-on-dark);
+      line-height: 1.4;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+      position: relative; z-index: 1;
+    }
+    .hero-title em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    /* 副標題 */
+    .hero-subtitle {
+      font-size: 13.5px;
+      color: var(--text-muted-dark);
+      max-width: 300px;
+      margin: 0 auto;
+      line-height: 1.9;
+      position: relative; z-index: 1;
+    }
+
+    /* Meta 列 */
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      position: relative; z-index: 1;
+    }
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: var(--text-muted-dark);
+      letter-spacing: 0.04em;
+    }
+    .hero-meta-dot {
+      width: 4px; height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      opacity: 0.7;
+    }
+
+    /* ============================================================
+       進度條
+    ============================================================ */
+    .progress-bar-wrapper {
+      background: var(--bg-dark);
+      height: 2px;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--accent);
+      transition: width 0.5s var(--ease);
+      width: 0%;
+    }
+
+    /* ============================================================
+       表單容器
+    ============================================================ */
+    .form-container {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 36px 16px 64px;
+    }
+
+    /* 區段分隔標題 */
+    .section-divider {
+      text-align: center;
+      margin: 8px 0 24px;
+      position: relative;
+    }
+    .section-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 0; right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-divider span {
+      position: relative;
+      background: var(--bg);
+      padding: 0 14px;
+      font-size: 11px;
+      color: var(--text-light);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-family: var(--sans);
+    }
+
+    /* ============================================================
+       表單卡片
+    ============================================================ */
+    .form-card {
+      background: var(--white);
+      border-radius: var(--r-md);
+      padding: 28px 24px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-xs);
+      border: 1px solid var(--border-light);
+      transition: box-shadow var(--t), border-color var(--t);
+      animation: fadeUp 0.5s var(--ease) both;
+      position: relative;
+    }
+    .form-card:hover {
+      box-shadow: var(--shadow-sm);
+      border-color: var(--border);
+    }
+    .form-card:focus-within {
+      border-color: var(--accent-light);
+      box-shadow: var(--shadow-sm), 0 0 0 3px rgba(246, 179, 122, 0.10);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .form-card:nth-child(1)  { animation-delay: 0.04s; }
+    .form-card:nth-child(2)  { animation-delay: 0.08s; }
+    .form-card:nth-child(3)  { animation-delay: 0.12s; }
+    .form-card:nth-child(4)  { animation-delay: 0.16s; }
+    .form-card:nth-child(5)  { animation-delay: 0.20s; }
+    .form-card:nth-child(6)  { animation-delay: 0.24s; }
+    .form-card:nth-child(7)  { animation-delay: 0.28s; }
+    .form-card:nth-child(8)  { animation-delay: 0.32s; }
+    .form-card:nth-child(9)  { animation-delay: 0.36s; }
+    .form-card:nth-child(10) { animation-delay: 0.40s; }
+
+    /* ============================================================
+       欄位標題
+    ============================================================ */
+    .field-label {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .field-label .required-dot {
+      color: var(--accent);
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .field-hint {
+      font-family: var(--sans);
+      font-size: 12px;
+      color: var(--text-light);
+      font-weight: 400;
+      margin-top: 4px;
+      display: block;
+      line-height: 1.65;
+    }
+    .field-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px; height: 22px;
+      background: var(--accent-pale);
+      color: var(--accent-deep);
+      font-size: 10.5px;
+      font-weight: 700;
+      font-family: var(--sans);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       文字輸入
+    ============================================================ */
+    .text-input {
+      width: 100%;
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-sm);
+      padding: 13px 16px;
+      font-family: var(--sans);
+      font-size: 15px;
+      color: var(--text-primary);
+      outline: none;
+      transition: border-color var(--t), box-shadow var(--t), background var(--t);
+      -webkit-appearance: none;
+    }
+    .text-input::placeholder { color: var(--text-light); }
+    .text-input:focus {
+      border-color: var(--accent);
+      background: var(--white);
+      box-shadow: 0 0 0 3px rgba(246, 179, 122, 0.15);
+    }
+    .text-input.error {
+      border-color: #E0A0A0;
+      box-shadow: 0 0 0 3px rgba(220, 140, 140, 0.12);
+    }
+
+    /* ============================================================
+       Radio Pills
+    ============================================================ */
+    .radio-group { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .radio-pill input[type="radio"] { display: none; }
+    .radio-pill label {
+      display: inline-block;
+      padding: 9px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-family: var(--sans);
+      font-size: 13.5px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--t);
+      background: var(--bg);
+      user-select: none;
+      white-space: nowrap;
+    }
+    .radio-pill input[type="radio"]:checked + label {
+      background: var(--accent-pale);
+      border-color: var(--accent);
+      color: var(--accent-deep);
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(246, 179, 122, 0.22);
+    }
+    .radio-pill label:hover {
+      border-color: var(--accent-light);
+      color: var(--accent-deep);
+      background: var(--accent-pale);
+    }
+
+    /* ============================================================
+       Checkbox Pills
+    ============================================================ */
+    .checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .checkbox-pill input[type="checkbox"] { display: none; }
+    .checkbox-pill label {
+      display: inline-block;
+      padding: 9px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 50px;
+      font-family: var(--sans);
+      font-size: 13.5px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--t);
+      background: var(--bg);
+      user-select: none;
+    }
+    .checkbox-pill input[type="checkbox"]:checked + label {
+      background: var(--accent-pale);
+      border-color: var(--accent);
+      color: var(--accent-deep);
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(246, 179, 122, 0.22);
+    }
+    .checkbox-pill label:hover {
+      border-color: var(--accent-light);
+      color: var(--accent-deep);
+      background: var(--accent-pale);
+    }
+
+    /* ============================================================
+       壓力值 1–10
+    ============================================================ */
+    .stress-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 7px;
+    }
+    .stress-btn-wrap input[type="radio"] { display: none; }
+    .stress-btn-wrap label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 46px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r-sm);
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all var(--t);
+      background: var(--bg);
+    }
+    .stress-btn-wrap input[type="radio"]:checked + label {
+      background: var(--accent);
+      border-color: var(--accent-deep);
+      color: var(--white);
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(246, 179, 122, 0.45);
+      transform: scale(1.05);
+    }
+    .stress-btn-wrap label:hover {
+      border-color: var(--accent);
+      color: var(--accent-deep);
+      background: var(--accent-pale);
+    }
+    .stress-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 8px;
+      padding: 0 2px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       時間選擇
+    ============================================================ */
+    .time-row { display: flex; gap: 14px; }
+    .time-row > div { flex: 1; }
+    .time-label-small {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       條件欄位
+    ============================================================ */
+    .conditional-field {
+      display: none;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light);
+      animation: fadeUp 0.3s var(--ease) both;
+    }
+    .conditional-field.visible { display: block; }
+
+    /* ============================================================
+       錯誤提示
+    ============================================================ */
+    .error-msg {
+      display: none;
+      font-size: 12px;
+      color: #B06060;
+      margin-top: 10px;
+    }
+    .error-msg.visible { display: block; }
+
+    /* ============================================================
+       送出按鈕區塊 — 深色背景交替
+    ============================================================ */
+    .submit-section {
+      background: var(--bg-dark);
+      padding: 48px 24px;
+      text-align: center;
+      margin-top: 8px;
+    }
+    .submit-section-label {
+      font-family: var(--serif);
+      font-size: 13px;
+      color: var(--text-muted-dark);
+      letter-spacing: 0.12em;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .submit-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      max-width: 400px;
+      padding: 20px 40px;
+      background: var(--accent);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      border: none;
+      border-radius: var(--r-xl);
+      cursor: pointer;
+      transition: all var(--t);
+      box-shadow: 0 6px 28px rgba(246, 179, 122, 0.50);
+      position: relative; overflow: hidden;
+    }
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+      transition: left 0.6s var(--ease);
+    }
+    .submit-btn:hover {
+      background: var(--accent-deep);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 36px rgba(246, 179, 122, 0.55);
+    }
+    .submit-btn:hover::before { left: 140%; }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn svg { width: 18px; height: 18px; }
+    .submit-note {
+      font-size: 11.5px;
+      color: var(--text-muted-dark);
+      margin-top: 14px;
+      letter-spacing: 0.06em;
+    }
+
+    /* ============================================================
+       全域錯誤 Banner
+    ============================================================ */
+    .global-error-banner {
+      display: none;
+      background: #FFF5F3;
+      border: 1px solid #F0C8C0;
+      border-radius: var(--r-sm);
+      padding: 14px 20px;
+      font-size: 13px;
+      color: #B06060;
+      max-width: 560px;
+      margin: 0 auto 12px;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+    .global-error-banner.visible { display: block; }
+
+    /* ============================================================
+       結果區塊
+    ============================================================ */
+    #result-section {
+      display: none;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 40px 16px 80px;
+    }
+    #result-section.visible {
+      display: block;
+      animation: fadeUp 0.6s var(--ease) both;
+    }
+
+    /* 結果 Header — 深色 */
+    .result-header {
+      background: var(--bg-dark);
+      border-radius: var(--r-lg);
+      padding: 40px 28px 36px;
+      margin-bottom: 12px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .result-header::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 400px; height: 400px;
+      background: radial-gradient(ellipse, rgba(246, 179, 122, 0.10) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .result-greeting {
+      font-size: 12.5px;
+      color: var(--text-muted-dark);
+      margin-bottom: 6px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+    .result-type-label {
+      font-size: 12px;
+      color: var(--text-muted-dark);
+      margin-bottom: 10px;
+      letter-spacing: 0.06em;
+      position: relative; z-index: 1;
+    }
+    .result-type-name {
+      font-family: var(--serif);
+      font-size: clamp(40px, 10vw, 56px);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.1;
+      margin-bottom: 14px;
+      letter-spacing: 0.06em;
+      position: relative; z-index: 1;
+    }
+    .result-type-badge {
+      display: none;
+    }
+    .result-desc {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--text-muted-dark);
+      line-height: 2.0;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(246, 179, 122, 0.15);
+      border-radius: var(--r-sm);
+      padding: 18px 20px;
+      position: relative; z-index: 1;
+    }
+
+    /* 結果卡片 — 淺色 */
+    .result-card {
+      background: var(--white);
+      border-radius: var(--r-md);
+      padding: 28px 24px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-xs);
+      border: 1px solid var(--border-light);
+    }
+    .result-card-title {
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.02em;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .result-card-title .icon { font-size: 17px; }
+
+    /* 調整清單 */
+    .adjustment-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .adjustment-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--text-body);
+      line-height: 1.75;
+    }
+    .adj-dot {
+      width: 24px; height: 24px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--white);
+      font-weight: 700;
+      font-family: var(--sans);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* BMI 格子 */
+    .bmi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .bmi-item {
+      background: var(--bg);
+      border-radius: var(--r-sm);
+      padding: 18px 14px;
+      text-align: center;
+      border: 1px solid var(--border-light);
+    }
+    .bmi-item-label {
+      font-size: 10.5px;
+      color: var(--text-light);
+      margin-bottom: 6px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-family: var(--sans);
+    }
+    .bmi-item-value {
+      font-family: var(--serif);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.1;
+    }
+    .bmi-item-unit {
+      font-size: 11px;
+      color: var(--text-light);
+      font-family: var(--sans);
+      margin-left: 2px;
+    }
+    .bmi-note {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 16px;
+      line-height: 1.65;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+
+    /* 部位 Tags */
+    .area-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .area-tag {
+      background: var(--accent-pale);
+      color: var(--accent-deep);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 50px;
+      border: 1px solid var(--accent-light);
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       CTA 區塊 — 深色背景
+    ============================================================ */
+    .line-cta {
+      background: var(--bg-dark);
+      border-radius: var(--r-lg);
+      padding: 48px 28px;
+      margin-top: 8px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .line-cta::before {
+      content: '';
+      position: absolute;
+      bottom: -80px; right: -80px;
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, rgba(246, 179, 122, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-story-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 24px;
+      position: relative; z-index: 1;
+    }
+    .cta-story-avatar {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid rgba(246, 179, 122, 0.45);
+      box-shadow: 0 0 0 5px rgba(246, 179, 122, 0.10);
+    }
+    .cta-story-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .cta-story-tag {
+      background: rgba(246, 179, 122, 0.12);
+      border: 1px solid rgba(246, 179, 122, 0.30);
+      color: var(--accent);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 5px 15px;
+      border-radius: 50px;
+      letter-spacing: 0.06em;
+    }
+
+    .line-cta-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-on-dark);
+      margin-bottom: 22px;
+      line-height: 1.55;
+      letter-spacing: 0.04em;
+      position: relative; z-index: 1;
+    }
+    .line-cta-body {
+      font-size: 13.5px;
+      color: var(--text-muted-dark);
+      line-height: 2.05;
+      margin-bottom: 36px;
+      text-align: left;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(246, 179, 122, 0.12);
+      border-radius: var(--r-sm);
+      padding: 20px 22px;
+      position: relative; z-index: 1;
+    }
+    .line-cta-body strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* 按鈕群 */
+    .cta-btn-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      position: relative; z-index: 1;
+    }
+    .cta-btn-group .line-btn,
+    .cta-btn-group .ig-btn { width: 100%; max-width: 340px; }
+
+    /* LINE 按鈕 */
+    .line-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 17px 36px;
+      background: #06C755;
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: var(--r-xl);
+      text-decoration: none;
+      transition: all var(--t);
+      box-shadow: 0 4px 20px rgba(6, 199, 85, 0.35);
+    }
+    .line-btn:hover {
+      background: #05B04A;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(6, 199, 85, 0.45);
+    }
+    .line-btn svg { width: 20px; height: 20px; }
+
+    /* IG 按鈕 */
+    .ig-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 17px 36px;
+      background: linear-gradient(135deg, #F5A623, #E04060, #B01890);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 14.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border-radius: var(--r-xl);
+      text-decoration: none;
+      transition: all var(--t);
+      box-shadow: 0 4px 20px rgba(200, 48, 100, 0.28);
+    }
+    .ig-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(200, 48, 100, 0.40);
+      filter: brightness(1.05);
+    }
+    .ig-btn svg { position: relative; z-index: 1; }
+
+    /* ============================================================
+       重填按鈕
+    ============================================================ */
+    .retry-btn {
+      display: block;
+      margin: 24px auto 0;
+      background: none;
+      border: 1px solid rgba(246, 179, 122, 0.25);
+      color: var(--text-muted-dark);
+      font-family: var(--sans);
+      font-size: 12px;
+      padding: 10px 28px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all var(--t);
+      letter-spacing: 0.08em;
+    }
+    .retry-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ============================================================
+       頁尾 — 深色背景
+    ============================================================ */
+    .site-footer {
+      background: var(--bg-dark);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: 11px;
+      color: var(--text-muted-dark);
+      letter-spacing: 0.08em;
+    }
+
+    /* ============================================================
+       RWD 手機版
+    ============================================================ */
+    @media (max-width: 480px) {
+      .hero { padding: 56px 20px 52px; }
+      .hero-title { font-size: 22px; }
+      .hero-photo { width: 84px; height: 84px; }
+      .form-container { padding: 24px 12px 60px; }
+      .form-card { padding: 22px 18px; }
+      .field-label { font-size: 14.5px; }
+      .stress-grid { gap: 5px; }
+      .stress-btn-wrap label { height: 42px; font-size: 15px; }
+      .time-row { flex-direction: column; gap: 10px; }
+      .result-type-name { font-size: 38px; }
+      .result-header { padding: 36px 20px 32px; border-radius: var(--r-lg); }
+      .line-cta { padding: 36px 20px; }
+      .line-cta-body { padding: 16px 16px; font-size: 13px; }
+      .result-card { padding: 22px 18px; }
+      .bmi-item-value { font-size: 22px; }
+      .submit-section { padding: 40px 20px; }
+      .submit-btn { font-size: 14.5px; }
+      .radio-pill label, .checkbox-pill label { padding: 8px 14px; font-size: 13px; }
+      .cta-btn-group .line-btn,
+      .cta-btn-group .ig-btn { max-width: 100%; }
+    }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ===== 進度條 ===== -->
+  <div class="progress-bar-wrapper" aria-hidden="true">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero">
+    <div class="hero-photo">
+      <img src="data:image/jpeg;base64,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" alt="依依" />
+    </div>
+    <div class="hero-badge">✦ 體態卡點評估 ✦</div>
+    <h1 class="hero-title">
+      你<em>瘦不下來</em>的<br>真正原因分析
+    </h1>
+    <p class="hero-subtitle">3 分鐘找出你的體態卡關點，<br>領取專屬調整方向。</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item"><span class="hero-meta-dot"></span> 即時顯示結果，提供寶貝簡單調整方向 <span class="hero-meta-dot"></span></span>
+    </div>
+  </header>
+
+  <!-- ===== 全域錯誤提示 ===== -->
+  <div class="global-error-banner" id="globalError" role="alert">
+    有幾個必填項目還沒完成，麻煩回頭確認一下 🌸
+  </div>
+
+  <!-- ===== 表單區塊 ===== -->
+  <main>
+    <form id="analysisForm" novalidate>
+      <div class="form-container">
+
+        <!-- 1. 姓名/暱稱 -->
+        <div class="form-card" data-card="1">
+          <div class="field-label">
+            <span class="field-number">1</span>
+            <span>姓名 / 暱稱 <span class="required-dot">•</span></span>
+          </div>
+          <input
+            type="text"
+            id="nickname"
+            name="nickname"
+            class="text-input"
+            placeholder="請輸入你想被稱呼的名字"
+            maxlength="30"
+          />
+          <div class="error-msg" id="err-nickname">請填寫你的暱稱 🌸</div>
+        </div>
+
+        <!-- 2. Facebook 或 IG 帳號名稱 -->
+        <div class="form-card" data-card="2b">
+          <div class="field-label">
+            <span class="field-number">2</span>
+            <div>
+              Facebook 或 Instagram 帳號名稱 <span class="required-dot">•</span>
+              <span class="field-hint">方便後續與你聯繫，可填其中一個即可</span>
+            </div>
+          </div>
+          <input
+            type="text"
+            id="socialAccount"
+            name="socialAccount"
+            class="text-input"
+            placeholder="例如：@yourname 或 yourname"
+            maxlength="60"
+          />
+          <div class="error-msg" id="err-socialAccount">請填寫你的社群帳號 🌸</div>
+        </div>
+
+        <!-- 3. 性別 -->
+        <div class="form-card" data-card="3">
+          <div class="field-label">
+            <span class="field-number">3</span>
+            <span>性別 <span class="required-dot">•</span></span>
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="性別">
+            <div class="radio-pill">
+              <input type="radio" id="gender-f" name="gender" value="female" />
+              <label for="gender-f">女</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="gender-m" name="gender" value="male" />
+              <label for="gender-m">男</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="gender-o" name="gender" value="other" />
+              <label for="gender-o">其他</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-gender">請選擇性別 🌸</div>
+        </div>
+
+        <!-- 4. 年齡 -->
+        <div class="form-card" data-card="4">
+          <div class="field-label">
+            <span class="field-number">4</span>
+            <span>年齡 <span class="required-dot">•</span></span>
+          </div>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            class="text-input"
+            placeholder="請輸入年齡（歲）"
+            min="10" max="100"
+            style="max-width:180px"
+          />
+          <div class="error-msg" id="err-age">請填寫年齡 🌸</div>
+        </div>
+
+        <!-- 5. 身高 -->
+        <div class="form-card" data-card="5">
+          <div class="field-label">
+            <span class="field-number">5</span>
+            <span>身高 <span class="required-dot">•</span></span>
+          </div>
+          <input
+            type="number"
+            id="height"
+            name="height"
+            class="text-input"
+            placeholder="請輸入身高（cm）"
+            min="100" max="250"
+            style="max-width:180px"
+          />
+          <div class="error-msg" id="err-height">請填寫身高 🌸</div>
+        </div>
+
+        <!-- 6. 體重 -->
+        <div class="form-card" data-card="6">
+          <div class="field-label">
+            <span class="field-number">6</span>
+            <span>體重 <span class="required-dot">•</span></span>
+          </div>
+          <input
+            type="number"
+            id="weight"
+            name="weight"
+            class="text-input"
+            placeholder="請輸入體重（kg）"
+            min="20" max="300"
+            style="max-width:180px"
+          />
+          <div class="error-msg" id="err-weight">請填寫體重 🌸</div>
+        </div>
+
+        <!-- 7. 體脂（非必填） -->
+        <div class="form-card" data-card="7">
+          <div class="field-label">
+            <span class="field-number">7</span>
+            <div>
+              體脂率（%）
+              <span class="field-hint">如果不清楚可以先略過，不影響分析結果</span>
+            </div>
+          </div>
+          <input
+            type="number"
+            id="bodyFat"
+            name="bodyFat"
+            class="text-input"
+            placeholder="選填，例如：25"
+            min="1" max="70"
+            style="max-width:180px"
+          />
+        </div>
+
+        <!-- 8. 是否生過小孩 -->
+        <div class="form-card" data-card="8">
+          <div class="field-label">
+            <span class="field-number">8</span>
+            <span>是否生過小孩？ <span class="required-dot">•</span></span>
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="是否生過小孩">
+            <div class="radio-pill">
+              <input type="radio" id="child-no" name="hasChild" value="no" />
+              <label for="child-no">沒有</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="child-yes" name="hasChild" value="yes" />
+              <label for="child-yes">有</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-hasChild">請選擇 🌸</div>
+
+          <!-- 9. 生過幾胎（條件顯示） -->
+          <div class="conditional-field" id="cf-childCount">
+            <div class="field-label" style="margin-bottom:12px">
+              <span class="field-number">9</span>
+              <span>生過幾胎？</span>
+            </div>
+            <div class="radio-group" role="radiogroup" aria-label="幾胎">
+              <div class="radio-pill">
+                <input type="radio" id="child-1" name="childCount" value="1" />
+                <label for="child-1">1 胎</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="child-2" name="childCount" value="2" />
+                <label for="child-2">2 胎</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="child-3" name="childCount" value="3+" />
+                <label for="child-3">3 胎以上</label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10. 產後多久（條件顯示） -->
+          <div class="conditional-field" id="cf-postpartum">
+            <div class="field-label" style="margin-bottom:12px">
+              <span class="field-number">10</span>
+              <span>目前是產後多久？</span>
+            </div>
+            <div class="radio-group" role="radiogroup" aria-label="產後多久">
+              <div class="radio-pill">
+                <input type="radio" id="pp-3m" name="postpartumTime" value="within3m" />
+                <label for="pp-3m">3 個月內</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="pp-6m" name="postpartumTime" value="3to6m" />
+                <label for="pp-6m">3–6 個月</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="pp-12m" name="postpartumTime" value="6to12m" />
+                <label for="pp-12m">6–12 個月</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="pp-1y" name="postpartumTime" value="over1y" />
+                <label for="pp-1y">1 年以上</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11. 壓力值（按鈕式） -->
+        <div class="form-card" data-card="11">
+          <div class="field-label">
+            <span class="field-number">11</span>
+            <span>目前生活壓力值是多少？ <span class="required-dot">•</span></span>
+          </div>
+          <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px;letter-spacing:0.02em;">1 = 輕鬆無壓力　　10 = 壓力極大</p>
+          <div class="stress-grid" role="radiogroup" aria-label="壓力值">
+            <div class="stress-btn-wrap"><input type="radio" id="stress-1" name="stressLevel" value="1" /><label for="stress-1">1</label></div>
+            <div class="stress-btn-wrap"><input type="radio" id="stress-2" name="stressLevel" value="2" /><label for="stress-2">2</label></div>
+            <div class="stress-btn-wrap"><input type="radio" id="stress-3" name="stressLevel" value="3" /><label for="stress-3">3</label></div>
+            <div class="stress-btn-wrap"><input type="radio" id="stress-4" name="stressLevel" value="4" /><label for="stress-4">4</label></div>
+            <div class="stress-btn-wrap"><input type="radio" id="stress-5" name="stressLevel" value="5" /><label for="stress-5">5</label></div>
+            <div class="stress-btn-wrap"><input type="radio" id="stress-6" name="stressLevel" value="6" /><label for="stress-6">6</label></div>
+            <div class="stress-btn-wrap"><input type="radio" id="stress-7" name="stressLevel" value="7" /><label for="stress-7">7</label></div>
+            <div class="stress-btn-wrap"><input type="radio" id="stress-8" name="stressLevel" value="8" /><label for="stress-8">8</label></div>
+            <div class="stress-btn-wrap"><input type="radio" id="stress-9" name="stressLevel" value="9" /><label for="stress-9">9</label></div>
+            <div class="stress-btn-wrap"><input type="radio" id="stress-10" name="stressLevel" value="10" /><label for="stress-10">10</label></div>
+          </div>
+          <div class="error-msg" id="err-stressLevel">請選擇壓力值 🌸</div>
+        </div>
+
+        <!-- 12. 排便一天一次 -->
+        <div class="form-card" data-card="12">
+          <div class="field-label">
+            <span class="field-number">12</span>
+            <span>有排便一天一次嗎？ <span class="required-dot">•</span></span>
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="排便一天一次">
+            <div class="radio-pill">
+              <input type="radio" id="bowel-daily-yes" name="bowelDaily" value="yes" />
+              <label for="bowel-daily-yes">有</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="bowel-daily-no" name="bowelDaily" value="no" />
+              <label for="bowel-daily-no">沒有</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-bowelDaily">請選擇 🌸</div>
+        </div>
+
+        <!-- 13. 排便頻率 -->
+        <div class="form-card" data-card="13">
+          <div class="field-label">
+            <span class="field-number">13</span>
+            <span>排便頻率 <span class="required-dot">•</span></span>
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="排便頻率">
+            <div class="radio-pill">
+              <input type="radio" id="bf-daily" name="bowelFreq" value="daily" />
+              <label for="bf-daily">每天</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="bf-2d" name="bowelFreq" value="every2days" />
+              <label for="bf-2d">2 天一次</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="bf-3d" name="bowelFreq" value="every3days" />
+              <label for="bf-3d">3 天一次</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="bf-4d" name="bowelFreq" value="over4days" />
+              <label for="bf-4d">4 天以上</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-bowelFreq">請選擇排便頻率 🌸</div>
+        </div>
+
+        <!-- 14. 每日水量 -->
+        <div class="form-card" data-card="14">
+          <div class="field-label">
+            <span class="field-number">14</span>
+            <span>一天喝多少水量？ <span class="required-dot">•</span></span>
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="水量">
+            <div class="radio-pill">
+              <input type="radio" id="water-500below" name="waterIntake" value="under500" />
+              <label for="water-500below">500ml 以下</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="water-500to1000" name="waterIntake" value="500to1000" />
+              <label for="water-500to1000">500–1000ml</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="water-1000to1500" name="waterIntake" value="1000to1500" />
+              <label for="water-1000to1500">1000–1500ml</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="water-1500to2000" name="waterIntake" value="1500to2000" />
+              <label for="water-1500to2000">1500–2000ml</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="water-2000plus" name="waterIntake" value="over2000" />
+              <label for="water-2000plus">2000ml 以上</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-waterIntake">請選擇水量 🌸</div>
+        </div>
+
+        <!-- 15 & 16. 睡眠時間 -->
+        <div class="form-card" data-card="1516">
+          <div class="field-label">
+            <span class="field-number">15–16</span>
+            <div>
+              睡眠時間 <span class="required-dot">•</span>
+              <span class="field-hint">24小時制，如欲填寫半夜12點半，請填寫 00:30</span>
+            </div>
+          </div>
+          <div class="time-row">
+            <div>
+              <div class="time-label-small">幾點睡？</div>
+              <input
+                type="time"
+                id="sleepTime"
+                name="sleepTime"
+                class="text-input"
+              />
+            </div>
+            <div>
+              <div class="time-label-small">幾點起床？</div>
+              <input
+                type="time"
+                id="wakeTime"
+                name="wakeTime"
+                class="text-input"
+              />
+            </div>
+          </div>
+          <div class="error-msg" id="err-sleep">請填寫睡眠與起床時間 🌸</div>
+        </div>
+
+        <!-- 17. 是否有疾病 -->
+        <div class="form-card" data-card="17">
+          <div class="field-label">
+            <span class="field-number">17</span>
+            <span>是否有疾病？ <span class="required-dot">•</span></span>
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="是否有疾病">
+            <div class="radio-pill">
+              <input type="radio" id="disease-no" name="hasDisease" value="no" />
+              <label for="disease-no">沒有</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="disease-yes" name="hasDisease" value="yes" />
+              <label for="disease-yes">有</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-hasDisease">請選擇 🌸</div>
+
+          <!-- 18. 疾病說明（條件顯示） -->
+          <div class="conditional-field" id="cf-diseaseDetail">
+            <div class="field-label" style="margin-bottom:12px">
+              <span class="field-number">18</span>
+              <span>請簡單填寫目前的狀況</span>
+            </div>
+            <input
+              type="text"
+              id="diseaseDetail"
+              name="diseaseDetail"
+              class="text-input"
+              placeholder="例如：甲狀腺功能低下、多囊性卵巢……"
+              maxlength="100"
+            />
+          </div>
+        </div>
+
+        <!-- 19. 是否補充保健食品 -->
+        <div class="form-card" data-card="19">
+          <div class="field-label">
+            <span class="field-number">19</span>
+            <span>目前有在補充保健食品嗎？ <span class="required-dot">•</span></span>
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="是否補充保健食品">
+            <div class="radio-pill">
+              <input type="radio" id="supple-no" name="hasSupplements" value="no" />
+              <label for="supple-no">沒有</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="supple-yes" name="hasSupplements" value="yes" />
+              <label for="supple-yes">有</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-hasSupplements">請選擇 🌸</div>
+
+          <!-- 補充保健食品說明（條件顯示） -->
+          <div class="conditional-field" id="cf-supplementDetail">
+            <div class="field-label" style="margin-bottom:12px">
+              <span class="field-number" style="font-size:10px">↳</span>
+              <span>請簡單填寫補充的項目</span>
+            </div>
+            <input
+              type="text"
+              id="supplementDetail"
+              name="supplementDetail"
+              class="text-input"
+              placeholder="例如：膠原蛋白、益生菌、維他命C……"
+              maxlength="100"
+            />
+          </div>
+        </div>
+
+        <!-- 20. 嘴饞程度 -->
+        <div class="form-card" data-card="20">
+          <div class="field-label">
+            <span class="field-number">20</span>
+            <span>你是否容易在下午或晚上想吃甜食、零食？ <span class="required-dot">•</span></span>
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="嘴饞程度">
+            <div class="radio-pill">
+              <input type="radio" id="crave-never" name="cravingFreq" value="rarely" />
+              <label for="crave-never">幾乎不會</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="crave-sometimes" name="cravingFreq" value="sometimes" />
+              <label for="crave-sometimes">偶爾</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="crave-often" name="cravingFreq" value="often" />
+              <label for="crave-often">常常</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="crave-everyday" name="cravingFreq" value="everyday" />
+              <label for="crave-everyday">幾乎每天</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-cravingFreq">請選擇 🌸</div>
+        </div>
+
+
+        <!-- 21. 手搖飲習慣 -->
+        <div class="form-card" data-card="21">
+          <div class="field-label">
+            <span class="field-number">21</span>
+            <span>你有喝手搖飲的習慣嗎？ <span class="required-dot">•</span></span>
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="手搖飲習慣">
+            <div class="radio-pill">
+              <input type="radio" id="bubble-never" name="bubbleTea" value="never" />
+              <label for="bubble-never">不喝</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="bubble-sometimes" name="bubbleTea" value="1to2" />
+              <label for="bubble-sometimes">一週 1–2 次</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="bubble-often" name="bubbleTea" value="3to5" />
+              <label for="bubble-often">一週 3–5 次</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="bubble-daily" name="bubbleTea" value="daily" />
+              <label for="bubble-daily">每天</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-bubbleTea">請選擇 🌸</div>
+
+          <!-- 有喝手搖飲才顯示：甜度與加料 -->
+          <div class="conditional-field" id="cf-bubbleDetail">
+
+            <div class="field-label" style="margin-bottom:12px; margin-top:4px">
+              <span class="field-number">↳</span>
+              <span>通常選擇的甜度？</span>
+            </div>
+            <div class="radio-group" role="radiogroup" aria-label="甜度">
+              <div class="radio-pill">
+                <input type="radio" id="sweet-full" name="sweetLevel" value="full" />
+                <label for="sweet-full">全糖</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="sweet-7" name="sweetLevel" value="7" />
+                <label for="sweet-7">七分糖</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="sweet-half" name="sweetLevel" value="half" />
+                <label for="sweet-half">半糖</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="sweet-3" name="sweetLevel" value="3" />
+                <label for="sweet-3">三分糖</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="sweet-less" name="sweetLevel" value="lessSugar" />
+                <label for="sweet-less">微糖</label>
+              </div>
+              <div class="radio-pill">
+                <input type="radio" id="sweet-none" name="sweetLevel" value="noSugar" />
+                <label for="sweet-none">無糖</label>
+              </div>
+            </div>
+
+            <div class="field-label" style="margin-bottom:12px; margin-top:18px">
+              <span class="field-number">↳</span>
+              <span>是否會加料？（可複選）</span>
+            </div>
+            <div class="checkbox-group" role="group" aria-label="加料">
+              <div class="checkbox-pill">
+                <input type="checkbox" id="topping-none" name="topping" value="none" />
+                <label for="topping-none">不加料</label>
+              </div>
+              <div class="checkbox-pill">
+                <input type="checkbox" id="topping-pearl" name="topping" value="pearl" />
+                <label for="topping-pearl">珍珠</label>
+              </div>
+              <div class="checkbox-pill">
+                <input type="checkbox" id="topping-pudding" name="topping" value="pudding" />
+                <label for="topping-pudding">布丁</label>
+              </div>
+              <div class="checkbox-pill">
+                <input type="checkbox" id="topping-jelly" name="topping" value="jelly" />
+                <label for="topping-jelly">仙草／愛玉</label>
+              </div>
+              <div class="checkbox-pill">
+                <input type="checkbox" id="topping-cheese" name="topping" value="cheese" />
+                <label for="topping-cheese">芝士／奶蓋</label>
+              </div>
+              <div class="checkbox-pill">
+                <input type="checkbox" id="topping-other" name="topping" value="other" />
+                <label for="topping-other">其他</label>
+              </div>
+            </div>
+
+          </div><!-- /cf-bubbleDetail -->
+        </div>
+
+        <!-- 22. 咖啡、茶習慣 -->
+        <div class="form-card" data-card="22">
+          <div class="field-label">
+            <span class="field-number">22</span>
+            <span>是否有喝咖啡、茶的習慣？ <span class="required-dot">•</span></span>
+          </div>
+          <div class="radio-group" role="radiogroup" aria-label="咖啡茶習慣">
+            <div class="radio-pill">
+              <input type="radio" id="coffee-no" name="coffeeTea" value="no" />
+              <label for="coffee-no">沒有</label>
+            </div>
+            <div class="radio-pill">
+              <input type="radio" id="coffee-yes" name="coffeeTea" value="yes" />
+              <label for="coffee-yes">有</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-coffeeTea">請選擇 🌸</div>
+
+          <!-- 有喝才顯示：時間點 -->
+          <div class="conditional-field" id="cf-coffeeTime">
+            <div class="field-label" style="margin-bottom:12px; margin-top:4px">
+              <span class="field-number">↳</span>
+              <span>通常喝的時間點？（可複選）</span>
+            </div>
+            <div class="checkbox-group" role="group" aria-label="喝的時間點">
+              <div class="checkbox-pill">
+                <input type="checkbox" id="ct-morning" name="coffeeTime" value="morning" />
+                <label for="ct-morning">早上</label>
+              </div>
+              <div class="checkbox-pill">
+                <input type="checkbox" id="ct-noon" name="coffeeTime" value="noon" />
+                <label for="ct-noon">中午</label>
+              </div>
+              <div class="checkbox-pill">
+                <input type="checkbox" id="ct-afternoon" name="coffeeTime" value="afternoon" />
+                <label for="ct-afternoon">下午</label>
+              </div>
+              <div class="checkbox-pill">
+                <input type="checkbox" id="ct-evening" name="coffeeTime" value="evening" />
+                <label for="ct-evening">晚上</label>
+              </div>
+            </div>
+          </div><!-- /cf-coffeeTime -->
+        </div>
+
+
+        <!-- 23. 目標體重 -->
+        <div class="form-card" data-card="23">
+          <div class="field-label">
+            <span class="field-number">23</span>
+            <span>想要瘦到幾公斤呢 🥰 <span class="required-dot">•</span></span>
+          </div>
+          <input
+            type="number"
+            id="targetWeight"
+            name="targetWeight"
+            class="text-input"
+            placeholder="請輸入目標體重（kg）"
+            min="20" max="300"
+            style="max-width:180px"
+          />
+          <div class="error-msg" id="err-targetWeight">請填寫目標體重 🌸</div>
+        </div>
+
+        <!-- 24. 想改善部位 -->
+        <div class="form-card" data-card="24">
+          <div class="field-label">
+            <span class="field-number">24</span>
+            <span>體態想要改善（可複選） <span class="required-dot">•</span></span>
+          </div>
+          <div class="checkbox-group" role="group" aria-label="想改善部位">
+            <div class="checkbox-pill">
+              <input type="checkbox" id="area-belly" name="improveArea" value="belly" />
+              <label for="area-belly">肚子</label>
+            </div>
+            <div class="checkbox-pill">
+              <input type="checkbox" id="area-legs" name="improveArea" value="legs" />
+              <label for="area-legs">腿</label>
+            </div>
+            <div class="checkbox-pill">
+              <input type="checkbox" id="area-arms" name="improveArea" value="arms" />
+              <label for="area-arms">手臂</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-improveArea">請至少選一個部位 🌸</div>
+        </div>
+
+        <!-- 25. 曾經用過什麼方式減重 -->
+        <div class="form-card" data-card="25">
+          <div class="field-label">
+            <span class="field-number">25</span>
+            <span>曾經用過什麼方式減重？（可複選） <span class="required-dot">•</span></span>
+          </div>
+          <div class="checkbox-group" role="group" aria-label="減重方式">
+            <div class="checkbox-pill">
+              <input type="checkbox" id="diet-calorie" name="dietMethod" value="calorie" />
+              <label for="diet-calorie">控制熱量／節食</label>
+            </div>
+            <div class="checkbox-pill">
+              <input type="checkbox" id="diet-exercise" name="dietMethod" value="exercise" />
+              <label for="diet-exercise">運動</label>
+            </div>
+            <div class="checkbox-pill">
+              <input type="checkbox" id="diet-intermittent" name="dietMethod" value="intermittent" />
+              <label for="diet-intermittent">間歇性斷食</label>
+            </div>
+            <div class="checkbox-pill">
+              <input type="checkbox" id="diet-lowcarb" name="dietMethod" value="lowcarb" />
+              <label for="diet-lowcarb">低醣／生酮</label>
+            </div>
+            <div class="checkbox-pill">
+              <input type="checkbox" id="diet-product" name="dietMethod" value="product" />
+              <label for="diet-product">減重產品</label>
+            </div>
+            <div class="checkbox-pill">
+              <input type="checkbox" id="diet-clinic" name="dietMethod" value="clinic" />
+              <label for="diet-clinic">診所／醫療協助</label>
+            </div>
+            <div class="checkbox-pill">
+              <input type="checkbox" id="diet-monjian" name="dietMethod" value="monjian" />
+              <label for="diet-monjian">猛健樂</label>
+            </div>
+            <div class="checkbox-pill">
+              <input type="checkbox" id="diet-none" name="dietMethod" value="none" />
+              <label for="diet-none">從未嘗試過</label>
+            </div>
+          </div>
+          <div class="error-msg" id="err-dietMethod">請至少選一個選項 🌸</div>
+        </div>
+      </div><!-- /form-container -->
+
+      <!-- 提交按鈕 -->
+      <div class="submit-section">
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"/>
+          </svg>
+          完成分析，立即查看結果
+        </button>
+        <p class="submit-note">填寫完成後即可查看專屬分析</p>
+      </div>
+
+    </form>
+
+    <!-- ===== 結果區塊 ===== -->
+    <section id="result-section" aria-live="polite">
+
+      <!-- 結果 Header -->
+      <div class="result-header">
+        <div class="result-greeting" id="res-greeting">Hi，</div>
+        <div class="result-type-label">你目前的主要卡關類型是</div>
+        <div class="result-type-name" id="res-type-name">—</div>
+        <div class="result-type-badge" id="res-type-badge">卡關類型</div>
+        <p class="result-desc" id="res-type-desc">—</p>
+      </div>
+
+      <!-- 調整建議 -->
+      <div class="result-card">
+        <div class="result-card-title">
+          <span class="icon">📋</span> 目前最該先調整的 3 件事
+        </div>
+        <ul class="adjustment-list" id="res-adjustments">
+          <li><span class="adj-dot">1</span><span>—</span></li>
+        </ul>
+      </div>
+
+      <!-- BMI 摘要 -->
+      <div class="result-card">
+        <div class="result-card-title">
+          <span class="icon">📊</span> 基本資訊摘要
+        </div>
+        <div class="bmi-grid">
+          <div class="bmi-item">
+            <div class="bmi-item-label">BMI 數值</div>
+            <div class="bmi-item-value" id="res-bmi">—</div>
+          </div>
+          <div class="bmi-item">
+            <div class="bmi-item-label">目前體重</div>
+            <div class="bmi-item-value"><span id="res-weight">—</span> <span class="bmi-item-unit">kg</span></div>
+          </div>
+          <div class="bmi-item">
+            <div class="bmi-item-label">目標體重</div>
+            <div class="bmi-item-value"><span id="res-target">—</span> <span class="bmi-item-unit">kg</span></div>
+          </div>
+          <div class="bmi-item">
+            <div class="bmi-item-label">差距</div>
+            <div class="bmi-item-value"><span id="res-diff">—</span> <span class="bmi-item-unit">kg</span></div>
+          </div>
+        </div>
+        <div style="margin-top:14px">
+          <div class="bmi-item-label" style="font-size:12px;color:var(--warm-gray);margin-bottom:6px">想改善部位</div>
+          <div class="area-tags" id="res-areas"></div>
+        </div>
+        <p class="bmi-note">以上為基本數據參考，不作為任何醫療診斷依據。</p>
+      </div>
+
+      <!-- 引導 CTA：依依的故事 + LINE + IG -->
+      <div class="line-cta">
+
+        <!-- 個人故事區 -->
+        <div class="cta-story-block">
+          <div class="cta-story-avatar"><img src="data:image/jpeg;base64,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" alt="依依" /></div>
+        </div>
+
+        <div class="line-cta-title">我是依依，我懂妳現在的感受</div>
+
+        <p class="line-cta-body">
+          我是依依，35歲、3歲孩子的媽咪<br>
+          透過一日三餐＋水果與保養，產後成功瘦下16公斤<br>
+          <br>
+          其實我從小就是小胖妹，因為身形而失去自信<br>
+          也嘗試過節食、168、戒醣等各種方法，卻總是反覆復胖<br>
+          <br>
+          一路走來我真正明白：<strong>胖是吃出來的，瘦也是吃出來的</strong><br>
+          關鍵不是不吃，而是吃對份量與方法<br>
+          食物沒有錯，找到適合自己的飲食<br>
+          才能真正穩定維持漂亮體態<br>
+          <br>
+          如果妳也正為體態困擾，我會陪妳一起慢慢變漂亮 🌸
+        </p>
+
+        <!-- 按鈕群 -->
+        <div class="cta-btn-group">
+
+          <a href="https://lin.ee/qhV0nI2" class="line-btn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;flex-shrink:0">
+              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+            </svg>
+            加入 LINE，領取專屬分析
+          </a>
+
+          <a href="https://www.instagram.com/yiyinli/" class="ig-btn" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;flex-shrink:0">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+            </svg>
+            追蹤我的 Instagram
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- 重填按鈕 -->
+      <button class="retry-btn" id="retryBtn" type="button">重新填寫分析表</button>
+
+    </section><!-- /result-section -->
+  </main>
+
+  <!-- ===== 頁尾 ===== -->
+  <footer class="site-footer">
+    <p>本分析僅供參考，不具醫療診斷效力。</p>
+  </footer>
+
+</div><!-- /page-wrapper -->
+
+<script>
+/* ============================================================
+   體態卡關分析 — 主邏輯
+   ============================================================ */
+
+// ─────────────────────────────────────────────
+// 工具函式：取得表單 radio 值
+// ─────────────────────────────────────────────
+function getRadioValue(name) {
+  const checked = document.querySelector(`input[name="${name}"]:checked`);
+  return checked ? checked.value : null;
+}
+
+// 取得複選 checkbox 值（陣列）
+function getCheckboxValues(name) {
+  const checks = document.querySelectorAll(`input[name="${name}"]:checked`);
+  return Array.from(checks).map(el => el.value);
+}
+
+// 計算睡眠時數（跨日處理）
+function calcSleepHours(sleepTimeStr, wakeTimeStr) {
+  if (!sleepTimeStr || !wakeTimeStr) return null;
+  const [sh, sm] = sleepTimeStr.split(':').map(Number);
+  const [wh, wm] = wakeTimeStr.split(':').map(Number);
+  let sleepMins = sh * 60 + sm;
+  let wakeMins  = wh * 60 + wm;
+  // 跨日處理
+  if (wakeMins <= sleepMins) wakeMins += 24 * 60;
+  return (wakeMins - sleepMins) / 60;
+}
+
+// 判斷是否為晚睡（00:30 之後）
+function isLateSleep(sleepTimeStr) {
+  if (!sleepTimeStr) return false;
+  const [h, m] = sleepTimeStr.split(':').map(Number);
+  // 00:30 = 30 分鐘，但也要涵蓋 01:xx, 02:xx…
+  // 晚睡定義：時間 >= 00:30 且 <= 06:00（視為還沒睡）
+  const totalMins = h * 60 + m;
+  // 00:30 = 30；若 h 為 0–5，且 totalMins >= 30 視為晚睡
+  // 另外 23:xx 的人也算晚睡（23:30 以後）
+  if (h === 23 && m >= 30) return true;
+  if (h >= 0 && h <= 5 && totalMins >= 30) return true;
+  return false;
+}
+
+// ─────────────────────────────────────────────
+// 條件欄位顯示切換
+// ─────────────────────────────────────────────
+function setupConditionalFields() {
+  // 生過小孩 → 顯示幾胎 & 產後多久
+  document.querySelectorAll('input[name="hasChild"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const hasChild = radio.value === 'yes';
+      toggleConditional('cf-childCount', hasChild);
+      toggleConditional('cf-postpartum', hasChild);
+    });
+  });
+
+  // 是否有疾病 → 顯示疾病說明
+  document.querySelectorAll('input[name="hasDisease"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      toggleConditional('cf-diseaseDetail', radio.value === 'yes');
+    });
+  });
+
+  // 咖啡茶 → 顯示時間點
+  document.querySelectorAll('input[name="coffeeTea"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      toggleConditional('cf-coffeeTime', radio.value === 'yes');
+    });
+  });
+
+  // 手搖飲 → 顯示甜度與加料
+  document.querySelectorAll('input[name="bubbleTea"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      const showDetail = ['1to2', '3to5', 'daily'].includes(radio.value);
+      toggleConditional('cf-bubbleDetail', showDetail);
+    });
+  });
+
+  // 是否補充保健食品 → 顯示補充項目說明
+  document.querySelectorAll('input[name="hasSupplements"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      toggleConditional('cf-supplementDetail', radio.value === 'yes');
+    });
+  });
+}
+
+function toggleConditional(id, show) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  if (show) {
+    el.classList.add('visible');
+  } else {
+    el.classList.remove('visible');
+  }
+}
+
+// ─────────────────────────────────────────────
+// 進度條更新（根據已填欄位比例）
+// ─────────────────────────────────────────────
+function updateProgressBar() {
+  const required = [
+    'nickname', 'gender', 'age', 'height', 'weight',
+    'hasChild', 'stressLevel', 'bowelDaily', 'waterIntake',
+    'sleepTime', 'wakeTime', 'bowelFreq', 'hasDisease',
+    'targetWeight', 'cravingFreq'
+  ];
+  let filled = 0;
+
+  // 文字欄位
+  ['nickname', 'age', 'height', 'weight', 'targetWeight', 'socialAccount'].forEach(id => {
+    if (document.getElementById(id)?.value.trim()) filled++;
+  });
+
+  // 時間
+  if (document.getElementById('sleepTime')?.value) filled++;
+  if (document.getElementById('wakeTime')?.value) filled++;
+
+  // Radio
+  ['gender', 'hasChild', 'stressLevel', 'bowelDaily', 'waterIntake',
+   'bowelFreq', 'hasDisease', 'cravingFreq', 'bubbleTea', 'coffeeTea'].forEach(name => {
+    if (getRadioValue(name)) filled++;
+  });
+
+  // Checkbox
+  if (getCheckboxValues('improveArea').length > 0) filled++;
+  if (getCheckboxValues('dietMethod').length > 0) filled++;
+
+  // Radio - hasSupplements
+  if (getRadioValue('hasSupplements')) filled++;
+
+  const total = required.length + 6; // +6 for improveArea, dietMethod, hasSupplements, socialAccount, bubbleTea, coffeeTea
+  const pct = Math.min(100, Math.round((filled / total) * 100));
+  document.getElementById('progressBar').style.width = pct + '%';
+}
+
+// ─────────────────────────────────────────────
+// 表單驗證
+// ─────────────────────────────────────────────
+function validateForm() {
+  let valid = true;
+
+  // 清除所有舊的錯誤
+  document.querySelectorAll('.error-msg').forEach(el => el.classList.remove('visible'));
+  document.querySelectorAll('.text-input').forEach(el => el.classList.remove('error'));
+
+  // 驗證文字/數字欄位
+  function checkText(id, errId) {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) {
+      el.classList.add('error');
+      document.getElementById(errId).classList.add('visible');
+      valid = false;
+      return false;
+    }
+    return true;
+  }
+
+  // 驗證 radio
+  function checkRadio(name, errId) {
+    if (!getRadioValue(name)) {
+      document.getElementById(errId).classList.add('visible');
+      valid = false;
+      return false;
+    }
+    return true;
+  }
+
+  checkText('nickname', 'err-nickname');
+  checkRadio('gender', 'err-gender');
+  checkText('age', 'err-age');
+  checkText('height', 'err-height');
+  checkText('weight', 'err-weight');
+  checkRadio('hasChild', 'err-hasChild');
+  checkRadio('stressLevel', 'err-stressLevel');
+  checkRadio('bowelDaily', 'err-bowelDaily');
+  checkRadio('waterIntake', 'err-waterIntake');
+
+  // 睡眠時間
+  const sleep = document.getElementById('sleepTime').value;
+  const wake  = document.getElementById('wakeTime').value;
+  if (!sleep || !wake) {
+    document.getElementById('err-sleep').classList.add('visible');
+    valid = false;
+  }
+
+  checkRadio('bowelFreq', 'err-bowelFreq');
+  checkRadio('hasDisease', 'err-hasDisease');
+  checkText('targetWeight', 'err-targetWeight');
+
+  // 複選至少一個
+  if (getCheckboxValues('improveArea').length === 0) {
+    document.getElementById('err-improveArea').classList.add('visible');
+    valid = false;
+  }
+
+  checkRadio('cravingFreq', 'err-cravingFreq');
+  checkRadio('bubbleTea', 'err-bubbleTea');
+  checkRadio('coffeeTea', 'err-coffeeTea');
+  checkText('socialAccount', 'err-socialAccount');
+
+  return valid;
+}
+
+// ─────────────────────────────────────────────
+// 分析邏輯：計算四種卡關類型分數
+// ─────────────────────────────────────────────
+function analyzeType(data) {
+  /* 分數累計容器 */
+  const scores = {
+    stress:    0, // 壓力型
+    bloating:  0, // 水腫型
+    craving:   0, // 嘴饞型
+    metabolic: 0  // 代謝型
+  };
+
+  const {
+    gender,
+    bodyFat,
+    hasChild,
+    postpartumTime,
+    stressLevel,
+    waterIntake,
+    sleepTime,
+    wakeTime,
+    bowelFreq,
+    improveAreas,
+    cravingFreq
+  } = data;
+
+  /* ── 壓力型加分 ──────────────── */
+  if (stressLevel >= 7)         scores.stress += 2;
+  else if (stressLevel >= 6)    scores.stress += 1;
+
+  const sleepHours = calcSleepHours(sleepTime, wakeTime);
+  if (sleepHours !== null && sleepHours < 6) scores.stress += 2;
+  else if (sleepHours !== null && sleepHours < 7) scores.stress += 1;
+
+  if (isLateSleep(sleepTime))   scores.stress += 1;
+
+  // 產後一年內
+  if (hasChild === 'yes') {
+    if (['within3m', '3to6m', '6to12m'].includes(postpartumTime)) {
+      scores.stress += 2;
+    }
+  }
+
+  /* ── 水腫型加分 ──────────────── */
+  if (['under500', '500to1000'].includes(waterIntake)) scores.bloating += 2;
+  else if (waterIntake === '1000to1500')               scores.bloating += 1;
+
+  if (bowelFreq !== 'daily')                           scores.bloating += 1;
+  if (['every3days', 'over4days'].includes(bowelFreq)) scores.bloating += 1;
+
+  if (improveAreas.includes('legs') || improveAreas.includes('belly')) {
+    scores.bloating += 1;
+  }
+
+  /* ── 嘴饞型加分 ──────────────── */
+  if (['often', 'everyday'].includes(cravingFreq)) scores.craving += 3;
+  else if (cravingFreq === 'sometimes')            scores.craving += 1;
+
+  if (isLateSleep(sleepTime))   scores.craving += 1;
+  if (stressLevel >= 6)         scores.craving += 1;
+
+  /* ── 代謝型加分 ──────────────── */
+  // 體脂偏高
+  if (bodyFat) {
+    if (gender === 'female' && bodyFat > 30) scores.metabolic += 2;
+    else if (gender === 'male' && bodyFat > 25) scores.metabolic += 2;
+    else if (gender === 'other' && bodyFat > 28) scores.metabolic += 2;
+  }
+
+  if (['under500', '500to1000'].includes(waterIntake)) scores.metabolic += 1;
+
+  if (sleepHours !== null && sleepHours < 6)  scores.metabolic += 2;
+  else if (sleepHours !== null && sleepHours < 7) scores.metabolic += 1;
+
+  if (['every3days', 'over4days'].includes(bowelFreq)) scores.metabolic += 1;
+  if (bowelFreq !== 'daily') scores.metabolic += 1;
+
+  /* ── 決定主要類型（同分優先順序：壓力 > 水腫 > 嘴饞 > 代謝） ── */
+  const priority = ['stress', 'bloating', 'craving', 'metabolic'];
+  let mainType = 'stress';
+  let maxScore = -1;
+
+  priority.forEach(type => {
+    if (scores[type] > maxScore) {
+      maxScore = scores[type];
+      mainType = type;
+    }
+  });
+
+  return { mainType, scores };
+}
+
+// ─────────────────────────────────────────────
+// 結果文案對應表
+// ─────────────────────────────────────────────
+const TYPE_CONTENT = {
+  stress: {
+    name: '壓力型',
+    badge: '🌪 壓力型',
+    desc: `你現在最大的卡點，不一定是吃太多，而是生活節奏和壓力讓身體一直處在緊繃狀態。\n當睡眠不足、壓力偏高時，身體很容易出現體重停滯、肚子特別難瘦、晚上更容易嘴饞的情況。`,
+    adjustments: [
+      '先把睡眠拉到 6.5–7 小時以上',
+      '晚上減少情緒性進食',
+      '穩定正餐時間，不要隨意跳餐'
+    ]
+  },
+  bloating: {
+    name: '水腫型',
+    badge: '💧 水腫型',
+    desc: `你目前的體態困擾，很可能不只是脂肪，而是身體循環與排出節奏偏慢。\n這種類型很常會覺得：明明沒吃很多，但整個人就是腫腫的，特別是早上起來和晚上睡前差特多。`,
+    adjustments: [
+      '每日水量提升至 1500–2000ml',
+      '優先改善排便頻率，讓身體順暢排出',
+      '增加日常走動量，促進循環'
+    ]
+  },
+  craving: {
+    name: '嘴饞型',
+    badge: '🍬 嘴饞型',
+    desc: `你不是不知道方法，而是每天都在控制和失控之間循環。\n尤其壓力大、睡得晚時，身體更容易想補償性進食，下午或晚上的那一口往往才是卡關關鍵。`,
+    adjustments: [
+      '找出最容易失控的時段，提前準備替代方案',
+      '正餐要吃足，不要過度節食讓身體產生反彈',
+      '設定健康的替代零食選項（低GI為主）'
+    ]
+  },
+  metabolic: {
+    name: '代謝型',
+    badge: '🔥 代謝型',
+    desc: `你的身體目前比較像是基礎節奏還沒建立好。\n喝水、睡眠、排便、活動量，這些日常習慣都會直接影響體態變化速度，缺少其中一環就容易卡關。`,
+    adjustments: [
+      '穩定睡眠時間，讓身體找到規律',
+      '建立每日飲水習慣，早起一杯溫水開始',
+      '增加基礎活動量，從散步做起'
+    ]
+  }
+};
+
+// ─────────────────────────────────────────────
+// 渲染結果頁
+// ─────────────────────────────────────────────
+function renderResult(data, mainType) {
+  const content = TYPE_CONTENT[mainType];
+  const { nickname, weight, targetWeight, height, improveAreas } = data;
+
+  // 稱呼
+  document.getElementById('res-greeting').textContent = `${nickname}，`;
+  document.getElementById('res-type-name').textContent = content.name;
+  document.getElementById('res-type-badge').textContent = content.badge;
+  document.getElementById('res-type-desc').textContent = content.desc;
+
+  // 調整建議
+  const adjList = document.getElementById('res-adjustments');
+  adjList.innerHTML = content.adjustments.map((item, i) =>
+    `<li><span class="adj-dot">${i + 1}</span><span>${item}</span></li>`
+  ).join('');
+
+  // BMI
+  const bmi = weight / ((height / 100) ** 2);
+  document.getElementById('res-bmi').textContent = bmi.toFixed(1);
+  document.getElementById('res-weight').textContent = weight;
+  document.getElementById('res-target').textContent = targetWeight;
+  const diff = (weight - targetWeight).toFixed(1);
+  document.getElementById('res-diff').textContent = diff > 0 ? `-${diff}` : diff;
+
+  // 改善部位 tags
+  const areaMap = { belly: '肚子', legs: '腿', arms: '手臂' };
+  const areasEl = document.getElementById('res-areas');
+  areasEl.innerHTML = improveAreas
+    .map(a => `<span class="area-tag">${areaMap[a] || a}</span>`)
+    .join('');
+}
+
+// ─────────────────────────────────────────────
+// 預留 API 串接函式（未來可接 Google Apps Script）
+// ─────────────────────────────────────────────
+// ─────────────────────────────────────────────
+// ⚠️【串接設定】
+// 將 Google Apps Script 部署後的網址貼在這裡
+// ─────────────────────────────────────────────
+const GAS_URL = 'https://script.google.com/macros/s/AKfycby8MC5bF8TzkU4skkqFgtgCF85xKJfLqlYD_wnfX6uUTkqSwy_yjMd9ygZ9gnvhXOqN/exec';
+
+async function submitFormData(formPayload) {
+  // 尚未設定 GAS_URL 時，僅 console.log，不中斷流程
+  if (!GAS_URL || GAS_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL') {
+    console.log('[submitFormData] GAS_URL 尚未設定，資料如下：', formPayload);
+    return;
+  }
+
+  try {
+    // Google Apps Script 不支援 CORS preflight，改用 no-cors 送出
+    // 資料會成功寫入 Sheet，但前端無法讀取回傳值（這是正常的）
+    await fetch(GAS_URL, {
+      method:  'POST',
+      mode:    'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(formPayload),
+    });
+    console.log('[submitFormData] 資料已送出至 Google Sheets ✅');
+  } catch (err) {
+    // 網路錯誤時靜默處理，不影響前端結果顯示
+    console.warn('[submitFormData] 送出失敗，但不影響分析結果：', err);
+  }
+}
+
+// ─────────────────────────────────────────────
+// 表單送出主流程
+// ─────────────────────────────────────────────
+function handleSubmit(e) {
+  e.preventDefault();
+
+  const globalError = document.getElementById('globalError');
+  globalError.classList.remove('visible');
+
+  // 驗證
+  if (!validateForm()) {
+    globalError.classList.add('visible');
+    // 捲動到第一個錯誤
+    const firstErr = document.querySelector('.error-msg.visible');
+    if (firstErr) {
+      firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    return;
+  }
+
+  // 收集資料
+  const data = {
+    nickname:      document.getElementById('nickname').value.trim(),
+    gender:        getRadioValue('gender'),
+    age:           Number(document.getElementById('age').value),
+    height:        Number(document.getElementById('height').value),
+    weight:        Number(document.getElementById('weight').value),
+    bodyFat:       document.getElementById('bodyFat').value
+                     ? Number(document.getElementById('bodyFat').value)
+                     : null,
+    hasChild:      getRadioValue('hasChild'),
+    childCount:    getRadioValue('childCount'),
+    postpartumTime: getRadioValue('postpartumTime'),
+    stressLevel:   Number(getRadioValue('stressLevel')),
+    bowelDaily:    getRadioValue('bowelDaily'),
+    waterIntake:   getRadioValue('waterIntake'),
+    sleepTime:     document.getElementById('sleepTime').value,
+    wakeTime:      document.getElementById('wakeTime').value,
+    bowelFreq:     getRadioValue('bowelFreq'),
+    hasDisease:    getRadioValue('hasDisease'),
+    diseaseDetail: document.getElementById('diseaseDetail').value.trim(),
+    targetWeight:  Number(document.getElementById('targetWeight').value),
+    improveAreas:  getCheckboxValues('improveArea'),
+    cravingFreq:   getRadioValue('cravingFreq'),
+    bubbleTea:     getRadioValue('bubbleTea'),
+    sweetLevel:    getRadioValue('sweetLevel'),
+    toppings:      getCheckboxValues('topping'),
+    coffeeTea:     getRadioValue('coffeeTea'),
+    coffeeTime:    getCheckboxValues('coffeeTime'),
+    socialAccount: document.getElementById('socialAccount').value.trim(),
+    submittedAt:   new Date().toISOString()
+  };
+
+  // 分析
+  const { mainType } = analyzeType(data);
+
+  // 計算 BMI 供送出
+  const bmiValue = (data.weight / ((data.height / 100) ** 2)).toFixed(1);
+
+  // 呼叫 GAS 串接（非同步，不等待，不阻斷前端流程）
+  submitFormData({
+    ...data,
+    mainType,
+    bmi:           bmiValue,
+    hasSupplements: getRadioValue('hasSupplements'),
+    supplementDetail: document.getElementById('supplementDetail').value.trim(),
+    dietMethods:   getCheckboxValues('dietMethod'),
+  });
+
+  // 渲染結果
+  renderResult(data, mainType);
+
+  // 顯示結果區塊
+  const resultSection = document.getElementById('result-section');
+  resultSection.style.display = 'block';
+  resultSection.classList.add('visible');
+
+  // 隱藏表單 & 送出按鈕
+  document.getElementById('analysisForm').style.display = 'none';
+  document.getElementById('globalError').classList.remove('visible');
+
+  // 捲動到結果頂端
+  setTimeout(() => {
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
+
+  // 進度條滿格
+  document.getElementById('progressBar').style.width = '100%';
+}
+
+// ─────────────────────────────────────────────
+// 重填按鈕
+// ─────────────────────────────────────────────
+function handleRetry() {
+  document.getElementById('analysisForm').style.display = '';
+  document.getElementById('analysisForm').reset();
+
+  // 隱藏條件欄位
+  document.querySelectorAll('.conditional-field').forEach(el => el.classList.remove('visible'));
+
+  // 隱藏結果
+  const resultSection = document.getElementById('result-section');
+  resultSection.style.display = 'none';
+  resultSection.classList.remove('visible');
+
+  // 重置進度條
+  document.getElementById('progressBar').style.width = '0%';
+
+  // 捲到頂部
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─────────────────────────────────────────────
+// 初始化
+// ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  setupConditionalFields();
+
+  // 監聽所有輸入變化以更新進度條
+  document.getElementById('analysisForm').addEventListener('input', updateProgressBar);
+  document.getElementById('analysisForm').addEventListener('change', updateProgressBar);
+
+  // 表單提交
+  document.getElementById('analysisForm').addEventListener('submit', handleSubmit);
+
+  // 重填按鈕
+  document.getElementById('retryBtn').addEventListener('click', handleRetry);
+});
+</script>
+
+</body>
+</html>
